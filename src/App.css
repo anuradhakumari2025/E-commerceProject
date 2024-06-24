@@ -1,0 +1,15 @@
+/* h1{
+  font-weight: 34;
+  color: rgb(184, 34, 34);
+} unable to apply this style on h1 tag of AppName */
+
+input{
+  width: 100%;
+}
+.anu-container{
+  margin: 10px 5px;
+  text-align: left;
+}
+.anu-btn{
+  min-width: 100px;
+}
