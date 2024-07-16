@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { IoAddCircle } from "react-icons/io5";
 
 function AddToDo({ onNewItems }) {
-  const [toDoName, setToDoName] = useState();
-  const [toDoDueDate, setToDoDueDate] = useState();
+  const [toDoName, setToDoName] = useState("");
+  const [toDoDueDate, setToDoDueDate] = useState("");
   const handleNameChange = (event) => {
     // console.log(event.target.value);
     setToDoName(event.target.value);
@@ -44,8 +45,9 @@ function AddToDo({ onNewItems }) {
             // onClick={() => onNewItems("a","b")}
             onClick={handleAddBtnClicked}
           >
-            Add
-          </button>
+            {/* Add */}
+            <IoAddCircle />
+                      </button>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ const ToDoItems = ({ EachItems, onClickDelete }) => {
     <div>
       {EachItems.map((item) => (
         <Items
+        key={item.name}
           todoName={item.name}
           onClickDelete={onClickDelete}
           todoDate={item.date}
