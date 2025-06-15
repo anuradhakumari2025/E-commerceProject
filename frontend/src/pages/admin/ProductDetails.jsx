@@ -5,16 +5,16 @@ import {
   asyncDeleteProduct,
   asyncUpdateProduct,
 } from "../../store/actions/productAction";
+import { asyncUpdateProfile } from "../../store/actions/userActions";
+import { useState } from "react";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  // const products = useSelector((state) => state.productReducer.products);
+  const products = useSelector((state) => state.productReducer.products);
+  const user = useSelector((state) => state.userReducer.user);
+  const [showForm, setShowForm] = useState(false);
   // console.log(products)
-  const {
-    productReducer: { products },
-    userReducer: { user },
-  } = useSelector((state) => state);
-  console.log(user);
+  // console.log(user);
   const dispatch = useDispatch();
   const product = products.find((item) => item.id == id);
   // console.log(product);
@@ -34,114 +34,199 @@ const ProductDetails = () => {
     },
   });
 
+  const addToCartHandler = (product) => {
+    // console.log(product)
+    const copyUser = { ...user, cart: [...user.cart] };
+    // console.log(copyUser);
+    let idx = copyUser?.cart?.findIndex((c) => c.product.id == product.id);
+    console.log(idx);
+    if (idx === -1) {
+      copyUser.cart.push({ product, quantity: 1 });
+    } else {
+      copyUser.cart[idx] = {
+        product,
+        quantity: copyUser.cart[idx].quantity + 1,
+      };
+    }
+    // console.log("after push in cart", copyUser);
+    dispatch(asyncUpdateProfile(copyUser.id, copyUser));
+  };
+
+  //Update Product Handler Function
   const updateProductHandler = (product) => {
-    console.log(product);
+    // console.log(product);
     dispatch(asyncUpdateProduct(id, product));
+    setShowForm(false)
   };
 
   const deleteHandler = () => {
     dispatch(asyncDeleteProduct(id));
     navigate("/products");
+    setShowForm(false)
   };
   return (
     <>
-      <div className="productDetails">
-        <img src={product?.image} alt="" />
-        <h1> {product?.title} </h1>
-        <h2>{product?.category} </h2>
-        <p>{product?.price} </p>
-        <p>{product?.description} </p>
-        <button>Add To Cart</button>
-      </div>
+      <div className="product-modal">
+        <div className="modal-content">
+          {/* Left Side - Image Section */}
+          <div className="image-section">
+            <img
+              src={product?.image}
+              alt="Yellow Sweater"
+              className="main-image"
+            />
 
-      {user &&
-        user?.isAdmin &&
-          /* Form to update product by admin */
-        (
-          <div className="updateProduct">
-            <form onSubmit={handleSubmit(updateProductHandler)}>
-              {/* image Input field */}
-              <div className="image">
-                <p>Image:-</p>
-                <input
-                  {...register("image", {
-                    required: "*Please add image url",
-                  })}
-                  type="url"
-                  placeholder="Image url"
-                />
-                {errors?.image?.message && (
-                  <small className="error">{errors.image.message}</small>
-                )}
+            <div className="thumbnail-row">
+              <div className="thumbnail selected">
+                <img src={product?.image} alt="thumb1" />
               </div>
-
-              {/* title Input field */}
-              <div className="title">
-                <p>Title:-</p>
-                <input
-                  {...register("title", {
-                    required: "*Please add title",
-                  })}
-                  type="text"
-                  placeholder="title"
-                />
-                {errors?.title?.message && (
-                  <small className="error">{errors.title.message}</small>
-                )}
+              <div className="thumbnail">
+                <img src={product?.image} alt="thumb2" />
               </div>
-
-              {/* price Input field */}
-              <div className="price">
-                <p>price:-</p>
-                <input
-                  {...register("price", {
-                    required: "*Please add price",
-                  })}
-                  type="number"
-                  placeholder="price"
-                />
-                {errors?.price?.message && (
-                  <small className="error">{errors.price.message}</small>
-                )}
-              </div>
-
-              {/* category Input field */}
-              <div className="category">
-                <p>Category:-</p>
-                <input
-                  {...register("category", {
-                    required: "*Please add title",
-                  })}
-                  type="text"
-                  placeholder="category"
-                />
-                {errors?.category?.message && (
-                  <small className="error">{errors.category.message}</small>
-                )}
-              </div>
-
-              {/* description Input field */}
-              <div className="description">
-                <p>description:-</p>
-                <textarea
-                  {...register("description", {
-                    required: "*Please add description",
-                  })}
-                  // type="text"
-                  placeholder="description"
-                  rows={6}
-                ></textarea>
-                {errors?.description?.message && (
-                  <small className="error">{errors.description.message}</small>
-                )}
-              </div>
-              <button>Update</button>
-              <button type="button" onClick={deleteHandler}>
-                Delete
-              </button>
-            </form>
+            </div>
           </div>
-        )}
+
+          {/* Right Side - Details Section */}
+          <div className="details-section">
+            <h2 className="product-title">{product?.title}</h2>
+
+            <p>
+              <span className="label">Brand: </span>
+              <span className="value">Ziaomi</span>
+            </p>
+            <p>
+              <span className="label">Category: </span>
+              <span className="value">{product?.category} </span>
+            </p>
+            <p>
+              <span className="label">Desciption: </span>
+              <span className="value">{product?.description} </span>
+            </p>
+
+            <p className="rating-row">
+              <span className="label">Rated: </span>
+              <span className="stars">
+                {[...Array(5)].map((_, i) => (
+                  <i className="ri-star-line" key={i} color="#ffc107"></i>
+                ))}
+              </span>
+              <span className="rating-count">(50)</span>
+            </p>
+
+            <p className="price">{product?.price}</p>
+            <p className="stock-status">Stock Available</p>
+            <p className="seller">
+              <span className="label">Sold By: </span>
+              <span className="value">Mobile Store</span>
+            </p>
+           {!user?.isAdmin && <button
+              className="add-to-cart"
+              onClick={() => addToCartHandler(product)}
+            >
+              Add to Cart
+            </button>}
+            {user?.isAdmin && (
+              <button className="update" onClick={() => setShowForm(true)}>
+                Update Product
+              </button>
+            )}
+            
+          </div>
+        </div>
+      </div>
+      {showForm && (
+        /* Form to update product by admin */
+        <div className="updateProduct">
+          <form onSubmit={handleSubmit(updateProductHandler)}>
+            <i
+              className="close ri-close-large-line"
+              onClick={() => setShowForm(false)}
+            ></i>
+            <h1>
+              Welcome to <span>Velouria</span>
+            </h1>
+            {/* image Input field */}
+            <div className="image">
+              <p>Image:-</p>
+              <input
+                {...register("image", {
+                  required: "*Please add image url",
+                })}
+                type="url"
+                placeholder="Image url"
+              />
+              {errors?.image?.message && (
+                <small className="error">{errors.image.message}</small>
+              )}
+            </div>
+
+            {/* title Input field */}
+            <div className="title">
+              <p>Title:-</p>
+              <input
+                {...register("title", {
+                  required: "*Please add title",
+                })}
+                type="text"
+                placeholder="title"
+              />
+              {errors?.title?.message && (
+                <small className="error">{errors.title.message}</small>
+              )}
+            </div>
+
+            {/* price Input field */}
+            <div className="price">
+              <p>price:-</p>
+              <input
+                {...register("price", {
+                  required: "*Please add price",
+                })}
+                type="number"
+                placeholder="price"
+              />
+              {errors?.price?.message && (
+                <small className="error">{errors.price.message}</small>
+              )}
+            </div>
+
+            {/* category Input field */}
+            <div className="category">
+              <p>Category:-</p>
+              <input
+                {...register("category", {
+                  required: "*Please add title",
+                })}
+                type="text"
+                placeholder="category"
+              />
+              {errors?.category?.message && (
+                <small className="error">{errors.category.message}</small>
+              )}
+            </div>
+
+            {/* description Input field */}
+            <div className="description">
+              <p>Description:-</p>
+              <textarea
+                {...register("description", {
+                  required: "*Please add description",
+                })}
+                // type="text"
+                placeholder="description"
+                rows={6}
+              ></textarea>
+              {errors?.description?.message && (
+                <small className="error">{errors.description.message}</small>
+              )}
+            </div>
+            <button className="update">Update</button>
+            <button className="delete" type="button" onClick={deleteHandler}>
+              Delete
+            </button>
+          </form>
+        </div>
+      )}
     </>
   );
 };

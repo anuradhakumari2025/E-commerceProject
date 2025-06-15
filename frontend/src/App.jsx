@@ -7,16 +7,9 @@ import { asyncCurrentUser } from "./store/actions/userActions";
 import { asyncLoadProducts } from "./store/actions/productAction";
 
 const App = () => {
- 
-
-  const data = useSelector((state) => state);
-  // console.log("Data from app.jsx", data);
-  const dispatch = useDispatch();
+   const dispatch = useDispatch();
 
   useEffect(() => {
-    // getProducts();
-    // getUsers()
-    // dispatch(getUsers());
     dispatch(asyncCurrentUser())
     dispatch(asyncLoadProducts())
   }, []);

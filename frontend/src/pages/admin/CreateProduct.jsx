@@ -16,7 +16,7 @@ const CreateProduct = () => {
   //Create Product Handler Function
   const createProductHandler = (product) => {
     product.id = Date.now();
-    console.log(product);
+    // console.log(product);
     dispatch(asyncCreateProduct(product))
     navigate("/products");
   };
@@ -24,6 +24,13 @@ const CreateProduct = () => {
   return (
     <div className="createProduct">
       <form onSubmit={handleSubmit(createProductHandler)}>
+        <i
+          className="close ri-close-large-line"
+          onClick={() => navigate("/")}
+        ></i>
+        <h1>
+          Welcome to <span>Velouria</span>
+        </h1>
         {/* image Input field */}
         <div className="image">
           <p>Image:-</p>
@@ -56,7 +63,7 @@ const CreateProduct = () => {
 
         {/* price Input field */}
         <div className="price">
-          <p>price:-</p>
+          <p>Price:-</p>
           <input
             {...register("price", {
               required: "*Please add price",
@@ -71,14 +78,20 @@ const CreateProduct = () => {
 
         {/* category Input field */}
         <div className="category">
-          <p>Name:-</p>
-          <input
+          <p>Category:-</p>
+          <select
+            className=""
             {...register("category", {
-              required: "*Please add title",
+              required: "*Please add category",
             })}
-            type="text"
-            placeholder="category"
-          />
+            placeholder="lskdjfl"
+          >
+            <option value="">All Categories</option>
+            <option value="fashion">Fashion</option>
+            <option value="electronics">Electronics</option>
+            <option value="home" >Home</option>
+            <option value="beauty" >Beauty</option>
+          </select>
           {errors?.category?.message && (
             <small className="error">{errors.category.message}</small>
           )}
@@ -86,7 +99,7 @@ const CreateProduct = () => {
 
         {/* description Input field */}
         <div className="description">
-          <p>description:-</p>
+          <p>Description:-</p>
           <textarea
             {...register("description", {
               required: "*Please add description",

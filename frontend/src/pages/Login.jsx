@@ -2,10 +2,10 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncLoginUser } from "../store/actions/userActions";
+import { useState } from "react";
 const Login = () => {
-  
-  const dispatch = useDispatch()
-  const navigate=useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -15,12 +15,21 @@ const Login = () => {
 
   const loginHandler = (user) => {
     console.log(user);
-    dispatch(asyncLoginUser(user))
-    navigate('/')
+    dispatch(asyncLoginUser(user));
+    navigate("/products");
   };
+  const [showLogin,setShowLogin] = useState(false)
   return (
-    <div>
+    <div className="login">
       <form onSubmit={handleSubmit(loginHandler)}>
+        <i
+          className="close ri-close-large-line"
+          onClick={() => navigate('/')}
+        ></i>
+
+        <h1>
+          Welcome to <span>Velouria</span>
+        </h1>
         {/* Email Input field */}
         <div className="email">
           <p>Email:-</p>
@@ -52,7 +61,10 @@ const Login = () => {
         </div>
         <button>Login</button>
         <p>
-          Don't have an account?<Link to={"/register"}>Register</Link>
+          Don't have an account?{" "}
+          <Link className="active" to={"/register"}>
+            Register
+          </Link>
         </p>
       </form>
     </div>

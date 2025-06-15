@@ -9,21 +9,29 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
   const registerHandler = (user) => {
     user.id = Date.now();
+    user.cart = [];
     console.log(user);
-    user.isAdmin = false
+    user.isAdmin = false;
     dispatch(asyncRegisterUser(user));
     navigate("/login");
   };
 
   return (
-    <div>
+    <div className="register">
       <form onSubmit={handleSubmit(registerHandler)}>
+        <i
+          className="close ri-close-large-line"
+          onClick={() => navigate('/')}
+        ></i>
+
+        <h1>
+          Welcome to <span>Velouria</span>
+        </h1>
         {/* User Name Input field */}
         <div className="username">
           <p>Name:-</p>
@@ -70,7 +78,11 @@ const Register = () => {
         </div>
         <button>Register</button>
         <p>
-          Already have an account?<Link to={"/login"}> Login</Link>{" "}
+          Already have an account?
+          <Link className="active" to={"/login"}>
+            {" "}
+            Login
+          </Link>{" "}
         </p>
       </form>
     </div>
