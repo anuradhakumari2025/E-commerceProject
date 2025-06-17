@@ -71,7 +71,7 @@ export const asyncUpdateProfile = (id, user) => async (dispatch, getState) => {
     console.log("id", id, "user", user);
     
     const { data } = await axios.patch(
-      `e-commercebackend.railway.internal/users/${id}`,
+      `https://e-commercebackend-1-xg2z.onrender.com/users/${id}`,
       user
     );
     
