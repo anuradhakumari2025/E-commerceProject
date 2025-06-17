@@ -113,7 +113,7 @@ const ProductDetails = () => {
               <span className="rating-count">(50)</span>
             </p>
 
-            <p className="price">{product?.price}</p>
+            <p className="price">${product?.price}</p>
             <p className="stock-status">Stock Available</p>
             <p className="seller">
               <span className="label">Sold By: </span>
