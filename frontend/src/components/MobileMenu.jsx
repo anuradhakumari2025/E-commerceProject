@@ -24,6 +24,7 @@ const MobileMenu = () => {
                   <NavLink
                     className={(e) => (e.isActive ? "active" : "notActive")}
                     to={"/admin/create-product"}
+                    onClick={() => setShowMobileMenu(false)}
                   >
                     <h4>Create</h4>
                   </NavLink>
@@ -31,6 +32,7 @@ const MobileMenu = () => {
                 <NavLink
                   className={(e) => (e.isActive ? "active" : "notActive")}
                   to={"/products"}
+                  onClick={() => setShowMobileMenu(false)}
                 >
                   <h4> Products</h4>
                 </NavLink>
@@ -38,12 +40,14 @@ const MobileMenu = () => {
                 <NavLink
                   className={(e) => (e.isActive ? "active" : "notActive")}
                   to={"/user-profile"}
+                  onClick={() => setShowMobileMenu(false)}
                 >
                   <h4>Profile</h4>
                 </NavLink>
                 <NavLink
                   className={(e) => (e.isActive ? "active" : "notActive")}
                   to={"/wishlist"}
+                  onClick={() => setShowMobileMenu(false)}
                 >
                   <h4>Wishlist</h4>
                 </NavLink>
@@ -61,12 +65,14 @@ const MobileMenu = () => {
                 <NavLink
                   className={(e) => (e.isActive ? "active" : "notActive")}
                   to={"/"}
+                  onClick={() => setShowMobileMenu(false)}
                 >
                   <h4>Home</h4>
                 </NavLink>
                 <NavLink
                   className={(e) => (e.isActive ? "active" : "notActive")}
                   to={"/login"}
+                  onClick={() => setShowMobileMenu(false)}
                 >
                   <h4>Login</h4>
                 </NavLink>

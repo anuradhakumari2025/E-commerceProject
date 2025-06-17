@@ -10,7 +10,7 @@ const Home = () => {
     },
     {
       title: "Home",
-      img: "https://images.unsplash.com/photo-1721990336298-90832e791b5a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHdvbWFuJ3MlMjBzaG9ydHN8ZW58MHx8MHx8fDA%3D",
+      img: "https://images.unsplash.com/photo-1604578762246-41134e37f9cc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGluaW5nJTIwdGFibGV8ZW58MHx8MHx8fDA%3D",
     },
     {
       title: "Electronics",
