@@ -15,7 +15,8 @@ const Register = () => {
   const registerHandler = (user) => {
     user.id = Date.now();
     user.cart = [];
-    console.log(user);
+    user.wishlist = [];
+    // console.log(user);
     user.isAdmin = false;
     dispatch(asyncRegisterUser(user));
     navigate("/login");

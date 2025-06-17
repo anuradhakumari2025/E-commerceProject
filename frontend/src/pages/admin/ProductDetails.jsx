@@ -191,19 +191,25 @@ const ProductDetails = () => {
             </div>
 
             {/* category Input field */}
-            <div className="category">
-              <p>Category:-</p>
-              <input
-                {...register("category", {
-                  required: "*Please add title",
-                })}
-                type="text"
-                placeholder="category"
-              />
-              {errors?.category?.message && (
-                <small className="error">{errors.category.message}</small>
-              )}
-            </div>
+        <div className="category">
+          <p>Category:-</p>
+          <select
+            className=""
+            {...register("category", {
+              required: "*Please add category",
+            })}
+            placeholder="lskdjfl"
+          >
+            <option value="">All Categories</option>
+            <option value="fashion">Fashion</option>
+            <option value="electronics">Electronics</option>
+            <option value="home" >Home</option>
+            <option value="beauty" >Beauty</option>
+          </select>
+          {errors?.category?.message && (
+            <small className="error">{errors.category.message}</small>
+          )}
+        </div>
 
             {/* description Input field */}
             <div className="description">

@@ -5,8 +5,15 @@ import CartCard from "../../components/CartCard";
 const Cart = () => {
   const user = useSelector((state) => state.userReducer.user);
   // console.log(user);
+  const totalAmount = function () {
+    let sum = 0;
+    for (let i = 0; i < user.cart.length; i++) {
+      sum += user.cart[i].quantity * user.cart[i].product.price;
+    }
+    return sum
+  };
 
-  return (
+  return user?.cart?.length > 0 ? (
     <div className="carts">
       <div className="left">
         {user?.cart?.map((item, id) => (
@@ -16,7 +23,7 @@ const Cart = () => {
       <div className="right">
         <div className="total">
           <span>Total:</span>
-          <span className="amount">$460.00</span>
+          <span className="amount">${totalAmount()}</span>
         </div>
         <hr />
         <div className="comments">
@@ -46,6 +53,8 @@ const Cart = () => {
         </div>
       </div>
     </div>
+  ) : (
+    <h1 className="nothingInCart">No item in cart</h1>
   );
 };
 

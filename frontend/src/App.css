@@ -119,42 +119,51 @@ nav {
   color: black;
   position: relative;
 }
+nav .mobileMenu {
+  display: none;
+}
 nav .title {
   font-size: 2.2rem;
   color: rgba(224, 0, 0, 0.877);
   font-weight: 800;
+  cursor: pointer;
 }
 nav i {
   background-color: #f3f5f9;
   color: rgba(0, 0, 0, 0.658);
-  padding: 0.8rem;
   border-radius: 5px;
+  padding: 0.8rem;
 }
-nav .cart {
+nav .cartWrapper {
   position: relative;
 }
-nav .cart .cartCount {
-  width: 1.2rem;
-  background-color: #f94f6f;
-  height: 1.2rem;
+nav .cartWrapper .cartCount {
   position: absolute;
-  top: -20%;
   right: -10%;
+  top: -90%;
+  background-color: #f94f6f;
   border-radius: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-nav .cart .cartCount p {
+nav .cartWrapper .cartCount p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
   color: white;
 }
-nav .user {
+nav .user,
+nav .notUser {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
   align-items: center;
 }
-nav .user h4 {
+nav .user h4,
+nav .notUser h4 {
   font-weight: 500;
   font-size: 1.5rem;
   color: #f94f6f;
@@ -218,13 +227,15 @@ nav .notActive {
 }
 nav .showCart {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: -150%;
+  top: -130%;
   width: 30vw;
   min-height: 100vh;
   background-color: white;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.568);
   display: flex;
   flex-direction: column;
+  z-index: 10;
 }
 nav .showCart .bag {
   width: 100%;
@@ -257,24 +268,17 @@ nav .showCart .item .count {
   align-items: center;
   width: 10%;
 }
-nav .showCart .item .count .plus,
-nav .showCart .item .count .minus {
+nav .showCart .item .count .plus {
   color: #f94f6f;
-  border: 1px solid rgba(252, 113, 113, 0.781);
-  border-radius: 50%;
-  height: 2rem;
-  width: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
   font-size: 2rem;
-  padding-bottom: 0.5rem;
+  padding: 0;
+  background-color: white;
 }
 nav .showCart .item .count .minus {
-  color: #87914a;
-  background-color: #dae1e7;
-  border-color: #eee;
+  color: #8994b1;
+  background-color: white;
+  font-size: 2rem;
+  padding: 0;
 }
 nav .showCart .item .image {
   width: 20%;
@@ -313,23 +317,22 @@ nav .showCart .buttons {
   margin-top: auto;
 }
 nav .showCart .buttons button {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  border-radius: 5px;
-  font-size: 1.1rem;
+  padding: 0.8rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
 }
 nav .showCart .buttons .view {
-  border-color: red;
+  color: #f44366;
+  border-color: #f44366;
   background-color: white;
-  color: red;
+  margin-top: 2rem;
+  margin-top: 0;
 }
-nav .showCart .buttons .price {
-  background-color: #f94f6f;
-  border: none;
+nav .showCart .buttons .price,
+nav .showCart .buttons .view:hover {
+  background-color: #f44366;
   color: white;
-}
-nav .showCart .buttons .price:hover {
-  background-color: red;
+  border-color: #f44366;
 }
 
 .createProduct {
@@ -518,8 +521,9 @@ nav .showCart .buttons .price:hover {
 .products {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  padding: 1rem 3rem;
+  gap: 2.5rem;
+  padding: 2rem 3rem;
+  padding-bottom: 4rem;
 }
 
 .productCard {
@@ -538,7 +542,8 @@ nav .showCart .buttons .price:hover {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 .productCard .image .showHeart {
   position: absolute;
@@ -554,7 +559,7 @@ nav .showCart .buttons .price:hover {
   color: white;
   cursor: pointer;
 }
-.productCard .image .detail {
+.productCard .image .active .detail {
   text-align: center;
   width: 100%;
   position: absolute;
@@ -564,10 +569,7 @@ nav .showCart .buttons .price:hover {
   padding: 1rem 0;
   font-weight: 600;
   cursor: pointer;
-}
-.productCard .image .detail .active {
   text-decoration: none;
-  outline: none;
   color: white;
 }
 .productCard p {
@@ -588,6 +590,11 @@ nav .showCart .buttons .price:hover {
   color: #0f3460;
   font-weight: 600;
   padding-bottom: 1rem;
+}
+
+.productCard:hover {
+  scale: 1.05;
+  transition: all ease-in-out 0.4s;
 }
 
 .product-modal {
@@ -684,7 +691,8 @@ nav .showCart .buttons .price:hover {
   background-color: white;
   margin-top: 2rem;
 }
-.product-modal .modal-content .details-section .add-to-cart, .product-modal .modal-content .details-section .update:hover {
+.product-modal .modal-content .details-section .add-to-cart,
+.product-modal .modal-content .details-section .update:hover {
   background-color: #f44366;
   color: white;
   border-color: #f44366;
@@ -787,11 +795,11 @@ nav .showCart .buttons .price:hover {
   flex-direction: row;
   gap: 2rem;
   width: 100%;
-  padding: 1rem 4rem;
+  padding: 3rem 4rem;
   background-color: #f8f9fa;
 }
 .carts .left {
-  width: 70%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -803,7 +811,7 @@ nav .showCart .buttons .price:hover {
   padding: 1rem 2rem;
 }
 .carts .right {
-  width: 30%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -884,6 +892,14 @@ nav .showCart .buttons .price:hover {
   margin: 1rem 0;
 }
 
+.nothingInCart {
+  text-align: center;
+  color: #f94f6f;
+  font-size: 4rem;
+  font-weight: 600;
+  padding: 4rem;
+}
+
 .cartCard {
   display: flex;
   gap: 2rem;
@@ -908,10 +924,14 @@ nav .showCart .buttons .price:hover {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
 }
 .cartCard .about h2 {
   font-size: 1.5rem;
+  font-weight: 500;
+}
+.cartCard .about h3 {
+  font-size: 1rem;
   font-weight: 400;
 }
 .cartCard .about p {
@@ -944,23 +964,21 @@ nav .showCart .buttons .price:hover {
 }
 .cartCard .cardRight .quantity .minus,
 .cartCard .cardRight .quantity .plus {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 2.2rem;
-  border-radius: 5px;
-  width: 2.3rem;
-  height: 2.3rem;
-  padding-bottom: 0.5rem;
+  cursor: pointer;
+  padding: 0;
+  background-color: white;
 }
 .cartCard .cardRight .quantity .minus {
-  background-color: #dae1e7;
   color: #9ca5b5;
 }
 .cartCard .cardRight .quantity .plus {
-  background-color: rgb(245, 240, 240);
   color: #e94560;
+}
+
+.cartCard:hover {
+  scale: 1.02;
+  transition: all ease-in-out 0.4s;
 }
 
 .profile-page {
@@ -1170,6 +1188,40 @@ nav .showCart .buttons .price:hover {
 }
 
 @media (max-width: 1020px) {
+  nav {
+    padding: 1rem 1.2rem;
+  }
+  nav .searchbar-container,
+  nav .user,
+  nav .notUser {
+    display: none;
+  }
+  nav .mobileMenu {
+    display: block;
+  }
+  nav .mobileMenu i {
+    background-color: white;
+    font-size: 2rem;
+  }
+  nav .mobileMenu .showMenu {
+    position: absolute;
+    top: 90%;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.178);
+    width: 70%;
+    padding: 1rem 2rem;
+    z-index: 5;
+  }
+  nav .mobileMenu .showMenu .active {
+    color: #f94f6f;
+  }
+  nav .mobileMenu .showMenu .notActive {
+    color: white;
+  }
+  nav .mobileMenu .showMenu h4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
   .home .banner {
     align-items: flex-end;
   }
@@ -1181,6 +1233,7 @@ nav .showCart .buttons .price:hover {
   }
   .home .categories {
     width: 100%;
+    padding: 2rem 2rem;
   }
   .home .categories__grid {
     grid-template-columns: repeat(1, 1fr);
@@ -1191,6 +1244,9 @@ nav .showCart .buttons .price:hover {
   }
   .home footer p {
     padding-bottom: 0.4rem;
+  }
+  .login form, .register form {
+    width: 90%;
   }
   .profile-page .sidebar {
     display: none;
@@ -1219,17 +1275,23 @@ nav .showCart .buttons .price:hover {
   .editProfile form {
     width: 90%;
   }
+  .productsTitle {
+    margin-top: 2rem;
+  }
   .products {
     grid-template-columns: repeat(1, 1fr);
+    padding: 2rem 2rem;
   }
   .product-modal .modal-content {
     flex-direction: column;
     gap: 2rem;
   }
-  .updateProduct, .createProduct {
+  .updateProduct,
+  .createProduct {
     padding: 8rem 0;
   }
-  .updateProduct form, .createProduct form {
+  .updateProduct form,
+  .createProduct form {
     width: 90%;
   }
   .carts {

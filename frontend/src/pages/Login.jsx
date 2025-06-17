@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncLoginUser } from "../store/actions/userActions";
-import { useState } from "react";
+import { useEffect } from "react";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  let user = useSelector((state) => state.userReducer.user);
 
   const {
     register,
@@ -13,12 +14,15 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const loginHandler = (user) => {
-    console.log(user);
-    dispatch(asyncLoginUser(user));
-    navigate("/products");
+    const loginHandler = (user) => {
+    dispatch(asyncLoginUser(user)); // only dispatch, don’t navigate yet
   };
-  const [showLogin,setShowLogin] = useState(false)
+
+  useEffect(() => {
+    if (user) {
+      navigate("/products");
+    }
+  }, [user, navigate]); // redirect only when user exists in redux
   return (
     <div className="login">
       <form onSubmit={handleSubmit(loginHandler)}>

@@ -1,24 +1,41 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import MobileMenu from "./MobileMenu";
+import NavCart from "./NavCart";
 
-const Navbar = () => {
+const Navbar = ({ cartOpen, setCartOpen, cartRef, cartButtonRef }) => {
   let user = useSelector((state) => state.userReducer.user);
   // console.log(user);
-  const [showCart, setShowCart] = useState(false);
-
-  const handleFormClick = (e) => {
-    if (e.target.className !== "showCart") {
-      setShowCart(false);
+  const navigate = useNavigate();
+  
+  const handleCategoryChange = (e) => {
+    if (e.target.value) {
+      navigate(`/products?category=${e.target.value}`);
     }
   };
+  const handleSearch = (e) => {
+    if (e.key == "Enter" && e.target.value.trim()) {
+      navigate(`/products?title=${e.target.value}`);
+    }
+  };
+ 
 
-  useEffect(() => {}, [user]);
+  useEffect(() => {
+    console.log("Mount");
+    return () => {
+      console.log("Unmount");
+    };
+  }, [user]);
   return (
     <nav>
-      <h1 className="title">Velouria</h1>
+      <h1 className="title" onClick={() => navigate("/")}>
+        Velouria
+      </h1>
+      {/* If there user exist */}
       {user ? (
         <>
+          {/* Search Bar through name */}
           <div className="searchbar-container">
             <button className="search-button">
               <i className="ri-search-line"></i>
@@ -27,17 +44,25 @@ const Navbar = () => {
               type="text"
               placeholder="Search and hit enter..."
               className="search-input"
+              onKeyDown={handleSearch}
             />
-            <select className="category-dropdown">
-              <option>All Categories</option>
-              <option>Fashion</option>
-              <option>Electronics</option>
-              <option>Home</option>
-              <option>Beauty</option>
+            {/* Search throuh category */}
+            <select
+              onChange={handleCategoryChange}
+              className="category-dropdown"
+            >
+              <option value="" disabled>
+                Select Category
+              </option>
+              <option value="fashion">Fashion</option>
+              <option value="electronics">Electronics</option>
+              <option value="beauty">Beauty</option>
+              <option value="home">Home</option>
             </select>
           </div>
 
           <div className="user">
+            {/* Create product if user is admin */}
             {user.isAdmin && (
               <NavLink
                 className={(e) => (e.isActive ? "active" : "notActive")}
@@ -46,6 +71,7 @@ const Navbar = () => {
                 <h4>Create</h4>
               </NavLink>
             )}
+            {/* if there is user */}
             <NavLink
               className={(e) => (e.isActive ? "active" : "notActive")}
               to={"/products"}
@@ -60,62 +86,53 @@ const Navbar = () => {
             </NavLink>
             <NavLink
               className={(e) => (e.isActive ? "active" : "notActive")}
-              to={"/cart"}
+              to={"/wishlist"}
             >
-              <i className="ri-shopping-cart-2-line cart">
+              <div className="cartWrapper">
+                <i className="ri-heart-fill cart" style={{ color: "red" }}></i>
                 <div className="cartCount">
-                  <p>3</p>
+                  <p>{user?.wishlist?.length}</p>
                 </div>
-              </i>
-              {showCart && (
-                <div className="showCart" onClick={handleFormClick}>
-                  <div className="bag">
-                    <i className="ri-shopping-bag-line"></i>
-                    <p>3 Item</p>
-                  </div>
-                  <div className="item">
-                    <div className="count">
-                      <div className="plus">+</div>
-                      <span>1</span>
-                      <div className="minus">-</div>
-                    </div>
-                    <div className="image">
-                      <img
-                        src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGFudHxlbnwwfHwwfHx8MA%3D%3D"
-                        alt=""
-                      />
-                    </div>
-                    <div className="detail">
-                      <h1>Lorem, ipsum dolor.</h1>
-                      <h4>$120 x 1</h4>
-                      <p>$200.0</p>
-                    </div>
-                  </div>
-                  <div className="buttons">
-                    <button className="price">Checkout Now ($460.00)</button>
-                    <button className="view">View Cart</button>
-                  </div>
-                </div>
-              )}
+              </div>
             </NavLink>
+            <div className="cartWrapper" ref={cartButtonRef}>
+              <i
+                className="ri-shopping-cart-2-line cart"
+                onClick={() => setCartOpen(!cartOpen)}
+              ></i>
+
+              <div className="cartCount">
+                <p>{user?.cart?.length}</p>
+              </div>
+
+              {cartOpen && (
+               <NavCart user={user} cartRef={cartRef}/>
+              )}
+            </div>
+
+            {/* </NavLink> */}
           </div>
         </>
       ) : (
-        <>
+        <div className="notUser">
+          {/* When user not exist */}
           <NavLink
             className={(e) => (e.isActive ? "active" : "notActive")}
             to={"/"}
           >
-            <h5>Home</h5>
+            <h4>Home</h4>
           </NavLink>
           <NavLink
             className={(e) => (e.isActive ? "active" : "notActive")}
             to={"/login"}
           >
-            <h5>Login</h5>
+            <h4>Login</h4>
           </NavLink>
-        </>
+        </div>
       )}
+
+      {/* Mobile Menu */}
+      <MobileMenu />
     </nav>
   );
 };

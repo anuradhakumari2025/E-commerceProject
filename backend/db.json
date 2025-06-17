@@ -1,45 +1,299 @@
 {
   "users": [
     {
-      "id": 1749488436934,
+      "id": "1749488436934",
       "username": "persistencequotient@gmail.com",
-      "email": "krianuradha4321@gmail.com",
-      "password": "q",
-      "isAdmin": true
+      "email": "anu@gmail.com",
+      "password": "aa",
+      "isAdmin": true,
+      "cart": [
+        {
+          "product": {
+            "id": "1749664996483",
+            "image": "https://images.unsplash.com/photo-1616313253719-c46514cddee1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29tZW4lMjBvdXRmaXR8ZW58MHx8MHx8fDA%3D",
+            "title": "One Piece dress",
+            "price": "500",
+            "category": "fashion",
+            "description": "Looking gorgeous,body fit,pure cotton"
+          },
+          "quantity": 1
+        }
+      ]
     },
     {
-      "id": 1749488745480,
-      "username": "anu",
-      "email": "a@a.com",
-      "password": "123",
+      "id": "1749751522527",
+      "username": "ved",
+      "email": "ved@mail.com",
+      "password": "ved",
+      "cart": [
+        {
+          "product": {
+            "id": "1749664996483",
+            "image": "https://images.unsplash.com/photo-1616313253719-c46514cddee1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29tZW4lMjBvdXRmaXR8ZW58MHx8MHx8fDA%3D",
+            "title": "One Piece dress",
+            "price": "500",
+            "category": "Women wear",
+            "description": "Looking gorgeous"
+          },
+          "quantity": 3
+        },
+        {
+          "product": {
+            "id": "2",
+            "title": "Mens Casual Premium Slim Fit T-Shirts ",
+            "price": "22",
+            "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+            "category": "men's tshirt",
+            "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+          },
+          "quantity": 3
+        }
+      ],
+      "isAdmin": false,
+      "wishlist": []
+    },
+    {
+      "id": "1750143049003",
+      "username": "cool",
+      "email": "cool@mail.com",
+      "password": "cool",
+      "cart": [
+        {
+          "product": {
+            "id": "1750087896385",
+            "image": "https://images.unsplash.com/photo-1742519902469-3a8a1bd54197?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUzQnMlMjBmYXNoaW9ufGVufDB8fDB8fHww",
+            "title": "Blazer",
+            "price": "2000",
+            "category": "fashion",
+            "description": "A handsome and good looking smart blazer"
+          },
+          "quantity": 2
+        },
+        {
+          "product": {
+            "id": "1749664996483",
+            "image": "https://images.unsplash.com/photo-1616313253719-c46514cddee1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29tZW4lMjBvdXRmaXR8ZW58MHx8MHx8fDA%3D",
+            "title": "One Piece dress",
+            "price": "500",
+            "category": "fashion",
+            "description": "Looking gorgeous,body fit,pure cotton"
+          },
+          "quantity": 1
+        }
+      ],
+      "wishlist": [
+        {
+          "id": "1750087896385",
+          "image": "https://images.unsplash.com/photo-1742519902469-3a8a1bd54197?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUzQnMlMjBmYXNoaW9ufGVufDB8fDB8fHww",
+          "title": "Blazer",
+          "price": "2000",
+          "category": "fashion",
+          "description": "A handsome and good looking smart blazer"
+        },
+        {
+          "id": "1750088252144",
+          "image": "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhZHBob25lfGVufDB8fDB8fHww",
+          "title": "Headphone",
+          "price": "700",
+          "category": "electronics",
+          "description": "ldsfjio soijf;  soenfoi s osef onsl sn fnsdfsdlkfj oisnefjdnlfk"
+        }
+      ],
       "isAdmin": false
     }
   ],
   "products": [
     {
-      "id": 1,
-      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-      "price": 109.95,
-      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-    },
-    {
-      "id": 2,
-      "title": "Mens Casual Premium Slim Fit T-Shirts ",
-      "price": 22.3,
+      "id": "2",
+      "title": "Casual Premium Slim Fit T-Shirts ",
+      "price": "22",
       "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-      "category": "men's clothing",
+      "category": "fashion",
       "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
     },
     {
-      "id": 1749659513879,
-      "image": "https://media.istockphoto.com/id/1453999382/photo/jhangore-ki-kheer.webp?a=1&b=1&s=612x612&w=0&k=20&c=ZKfcvqfbRZKAAtIaG8dacTEUdzjNJ7crRKgAUBCzyPo=",
-      "title": "asdf",
-      "price": "23",
-      "category": "asdfsfad",
-      "description": "asdfasef"
+      "id": "1749664996483",
+      "image": "https://images.unsplash.com/photo-1616313253719-c46514cddee1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29tZW4lMjBvdXRmaXR8ZW58MHx8MHx8fDA%3D",
+      "title": "One Piece dress",
+      "price": "500",
+      "category": "fashion",
+      "description": "Looking gorgeous,body fit,pure cotton"
+    },
+    {
+      "id": "1750087896385",
+      "image": "https://images.unsplash.com/photo-1742519902469-3a8a1bd54197?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG1lbiUzQnMlMjBmYXNoaW9ufGVufDB8fDB8fHww",
+      "title": "Blazer",
+      "price": "2000",
+      "category": "fashion",
+      "description": "A handsome and good looking smart blazer"
+    },
+    {
+      "id": "1750088252144",
+      "image": "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhZHBob25lfGVufDB8fDB8fHww",
+      "title": "Headphone",
+      "price": "700",
+      "category": "electronics",
+      "description": "ldsfjio soijf;  soenfoi s osef onsl sn fnsdfsdlkfj oisnefjdnlfk"
+    },
+    {
+      "id": "1750187896385",
+      "image": "https://images.unsplash.com/photo-1742519902469-3a8a1bd54197?w=500&auto=format&fit=crop&q=60",
+      "title": "Blazer",
+      "price": "2000",
+      "category": "fashion",
+      "description": "A handsome and good looking smart blazer"
+    },
+    {
+      "id": "1750087896386",
+      "image": "https://images.unsplash.com/photo-1575695342320-d2d2d2f9b73f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjMzfHxzbWFydHBob25lfGVufDB8fDB8fHww",
+      "title": "Smartphone X1",
+      "price": "15000",
+      "category": "electronics",
+      "description": "A powerful smartphone with great battery life"
+    },
+    {
+      "id": "1750087896387",
+      "image": "https://images.unsplash.com/photo-1617422275563-4cf1103e7d60?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGlwc3RpayUyMHNldHxlbnwwfHwwfHx8MA%3D%3D",
+      "title": "Lipstick Set",
+      "price": "750",
+      "category": "beauty",
+      "description": "A set of matte lipsticks in trendy shades"
+    },
+    {
+      "id": "1750087896388",
+      "image": "https://images.unsplash.com/photo-1614666459373-a766431de1a6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdvb2RlbiUyMGNoYWlyfGVufDB8fDB8fHww",
+      "title": "Wooden Chair",
+      "price": "3200",
+      "category": "home",
+      "description": "Ergonomic wooden chair for your living room"
+    },
+    {
+      "id": "1750087896389",
+      "image": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500&auto=format&fit=crop&q=60",
+      "title": "Denim Jacket",
+      "price": "1800",
+      "category": "fashion",
+      "description": "Classic blue denim jacket for all seasons"
+    },
+    {
+      "id": "1750087896390",
+      "image": "https://images.unsplash.com/photo-1657223143970-08cc5afe9943?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHdpcmVsZXNzJTIwaGVhZHBob25lc3xlbnwwfHwwfHx8MA%3D%3D",
+      "title": "Wireless Headphones",
+      "price": "3500",
+      "category": "electronics",
+      "description": "Noise-canceling Bluetooth headphones"
+    },
+    {
+      "id": "1750087896391",
+      "image": "https://images.unsplash.com/photo-1638301868496-43577744a46c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZhY2UlMjBzZXJ1bXxlbnwwfHwwfHx8MA%3D%3D",
+      "title": "Face Serum",
+      "price": "1200",
+      "category": "beauty",
+      "description": "Vitamin C face serum for glowing skin"
+    },
+    {
+      "id": "1750087896392",
+      "image": "https://plus.unsplash.com/premium_photo-1681412205156-bb506a4ea970?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGFibGUlMjBsYW1wfGVufDB8fDB8fHww",
+      "title": "Table Lamp",
+      "price": "1400",
+      "category": "home",
+      "description": "Modern table lamp with warm lighting"
+    },
+    {
+      "id": "1750087896393",
+      "image": "https://media.istockphoto.com/id/855669884/photo/black-hair-dryer.webp?a=1&b=1&s=612x612&w=0&k=20&c=rvFcXx_6WVAhF7P7FcvrpenYWoY3cPe6fdr-Vj-XQWM=",
+      "title": "Casual Sneakers",
+      "price": "2300",
+      "category": "fashion",
+      "description": "Comfortable and stylish sneakers"
+    },
+    {
+      "id": "1750087896394",
+      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&auto=format&fit=crop&q=60",
+      "title": "Smartwatch Z",
+      "price": "4200",
+      "category": "electronics",
+      "description": "Fitness tracking smartwatch with heart rate monitor"
+    },
+    {
+      "id": "1750087896395",
+      "image": "https://media.istockphoto.com/id/855669884/photo/black-hair-dryer.webp?a=1&b=1&s=612x612&w=0&k=20&c=rvFcXx_6WVAhF7P7FcvrpenYWoY3cPe6fdr-Vj-XQWM=",
+      "title": "Hair Dryer",
+      "price": "1800",
+      "category": "beauty",
+      "description": "Fast drying hair dryer with ionic technology"
+    },
+    {
+      "id": "1750087896396",
+      "image": "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=500&auto=format&fit=crop&q=60",
+      "title": "Bookshelf",
+      "price": "5000",
+      "category": "home",
+      "description": "Spacious wooden bookshelf for your study"
+    },
+    {
+      "id": "1750087896397",
+      "image": "https://plus.unsplash.com/premium_photo-1673367751742-c8bb4902be75?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGVhdGhlciUyMGJvb3RzfGVufDB8fDB8fHww",
+      "title": "Leather Boots",
+      "price": "3600",
+      "category": "fashion",
+      "description": "Rugged and durable leather boots"
+    },
+    {
+      "id": "1750087896398",
+      "image": "https://images.unsplash.com/photo-1632073383420-01461da1e082?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGJsdWV0b290aCUyMHNwZWFrZXJ8ZW58MHx8MHx8fDA%3D",
+      "title": "Bluetooth Speaker",
+      "price": "2200",
+      "category": "electronics",
+      "description": "Portable Bluetooth speaker with bass boost"
+    },
+    {
+      "id": "1750087896399",
+      "image": "https://images.unsplash.com/photo-1661347243240-5ce7c9992369?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZvdW5kYXRpb24lMjBjcmVhbXxlbnwwfHwwfHx8MA%3D%3D",
+      "title": "Foundation Cream",
+      "price": "950",
+      "category": "beauty",
+      "description": "Smooth matte foundation for all skin types"
+    },
+    {
+      "id": "1750087896400",
+      "image": "https://images.unsplash.com/photo-1707348102631-5a4c0a6eed6f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8d2FsbCUyMGNsb2NrfGVufDB8fDB8fHww",
+      "title": "Wall Clock",
+      "price": "1100",
+      "category": "home",
+      "description": "Minimalist wall clock for modern interiors"
+    },
+    {
+      "id": "1750087896401",
+      "image": "https://images.unsplash.com/photo-1556227127-3f92597d4764?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdpbnRlciUyMGNvYXR8ZW58MHx8MHx8fDA%3D",
+      "title": "Winter Coat",
+      "price": "4200",
+      "category": "fashion",
+      "description": "Warm woolen coat for cold seasons"
+    },
+    {
+      "id": "1750087896402",
+      "image": "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGFibGV0fGVufDB8fDB8fHww",
+      "title": "Tablet 10\"",
+      "price": "8900",
+      "category": "electronics",
+      "description": "10-inch tablet for productivity and entertainment"
+    },
+    {
+      "id": "1750087896403",
+      "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&auto=format&fit=crop&q=60",
+      "title": "Skincare Kit",
+      "price": "2400",
+      "category": "beauty",
+      "description": "Complete skincare kit with cleanser, toner, moisturizer"
+    },
+    {
+      "id": "1750087896404",
+      "image": "https://images.unsplash.com/photo-1621781727100-c54d5cb67096?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y3VzaGlvbiUyMHNldHxlbnwwfHwwfHx8MA%3D%3D",
+      "title": "Cushion Set",
+      "price": "1600",
+      "category": "home",
+      "description": "Soft cushion set for bedroom or sofa"
     }
-  ],
-  "carts": []
+  ]
 }

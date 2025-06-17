@@ -7,7 +7,16 @@ export const asyncLoginUser = (user) => async (dispatch, getState) => {
       `users?email=${user.email}&password=${user.password}`
     );
     // console.log(data[0])
-    localStorage.setItem("user", JSON.stringify(data[0]));
+    if (data.length > 0) {
+      const loggedInUser = data[0];
+
+      localStorage.setItem("user", JSON.stringify(loggedInUser));
+
+      // Dispatch to update Redux immediately
+      dispatch(loadUser(loggedInUser));
+    } else {
+      console.log("User not found");
+    }
   } catch (error) {
     console.log(error);
   }
@@ -46,20 +55,19 @@ export const asyncUpdateProfile = (id, user) => async (dispatch, getState) => {
   try {
     const { data } = await axios.patch("/users/" + id, user);
     // console.log(data);
-    localStorage.setItem('user',JSON.stringify(data))
-    dispatch(asyncCurrentUser())
+    localStorage.setItem("user", JSON.stringify(data));
+    dispatch(asyncCurrentUser());
   } catch (error) {
     console.log(error);
   }
 };
 
- export const asyncDeleteUser =
-  (id) => async (dispatch, getState) => {
-    try {
-      await axios.delete("/users/" + id);
-      dispatch(asyncLogoutUser())
-      console.log("User Account Deleted Successfully!!")
-    } catch (error) {
-      console.log(error);
-    }
-  };
+export const asyncDeleteUser = (id) => async (dispatch, getState) => {
+  try {
+    await axios.delete("/users/" + id);
+    dispatch(asyncLogoutUser());
+    console.log("User Account Deleted Successfully!!");
+  } catch (error) {
+    console.log(error);
+  }
+};

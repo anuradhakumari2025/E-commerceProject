@@ -1,28 +1,29 @@
+import { useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import { useSelector } from "react-redux";
 
 const Home = () => {
   const categories = [
     {
-      title: "Men's Fashion",
+      title: "Fashion",
       img: "https://images.unsplash.com/photo-1618886614638-80e3c103d31a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmxhemVyfGVufDB8fDB8fHww",
     },
     {
-      title: "Women's Fashion",
+      title: "Home",
       img: "https://images.unsplash.com/photo-1721990336298-90832e791b5a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHdvbWFuJ3MlMjBzaG9ydHN8ZW58MHx8MHx8fDA%3D",
     },
     {
-      title: "Gadgets",
+      title: "Electronics",
       img: "https://images.unsplash.com/photo-1542393545-10f5cde2c810?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGxhcHRvcHxlbnwwfHwwfHx8MA%3D%3D",
     },
     {
-      title: "Cosmatics",
+      title: "Beauty",
       img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvc21ldGljfGVufDB8fDB8fHww",
     },
   ];
   // const [showLabel,setShowLabel] =
   const products = useSelector((state) => state.productReducer.products);
-
+  const navigate = useNavigate();
   return (
     <div className="home">
       <div className="banner">
@@ -37,7 +38,14 @@ const Home = () => {
           {categories.map((item, index) => (
             <div className="categoriesCard" key={index}>
               <img src={item.img} alt={item.title} />
-              <div className="categoriesLabel">{item.title}</div>
+              <div
+                className="categoriesLabel"
+                onClick={() =>
+                  navigate(`/products?category=${item.title.toLowerCase()}`)
+                }
+              >
+                {item.title}
+              </div>
             </div>
           ))}
         </div>
@@ -46,23 +54,28 @@ const Home = () => {
         <h1 className="productsTitle">Best Selling Products</h1>
         <div className="products">
           {products?.length > 0 &&
-            products?.map((product) => (
-              <ProductCard product={product} key={product.id} />
-            ))}
+            products
+              ?.slice(0, 8)
+              .map((product) => (
+                <ProductCard product={product} key={product.id} />
+              ))}
         </div>
       </section>
       <footer>
         <div>
           <h1>Velouria</h1>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi eum repellendus eos aperiam sapiente? Possimus incidunt, autem, fugit natus nemo voluptatum nam odit recusandae neque voluptates voluptas ratione deserunt dolorum?</p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi eum
+            repellendus eos aperiam sapiente? Possimus incidunt, autem, fugit
+            natus nemo voluptatum nam odit recusandae neque voluptates voluptas
+            ratione deserunt dolorum?
+          </p>
         </div>
         <div>
           <h2>About Us</h2>
           <p>Lorem, ipsum.</p>
           <p>Lorem, ipsum dolor.</p>
-          <p>Lorem, ipsum.
-
-          </p>
+          <p>Lorem, ipsum.</p>
           <p>Lorem ipsum dolor sit.</p>
           <p>Lorem, ipsum.</p>
         </div>
@@ -70,15 +83,16 @@ const Home = () => {
           <h2>Customer Care</h2>
           <p>Lorem, ipsum.</p>
           <p>Lorem, ipsum dolor.</p>
-          <p>Lorem, ipsum.
-
-          </p>
+          <p>Lorem, ipsum.</p>
           <p>Lorem ipsum dolor sit.</p>
           <p>Lorem, ipsum.</p>
         </div>
         <div>
           <h2>Contact Us</h2>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis, quas!</p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis,
+            quas!
+          </p>
           <p>Email: Lorem, ipsum dolor.</p>
           <p>Phone:3456789086</p>
         </div>
