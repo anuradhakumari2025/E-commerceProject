@@ -55,7 +55,8 @@ export const asyncUpdateProfile = (id, user) => async (dispatch, getState) => {
   try {
         console.log("id",id,"user",user)
 
-    const { data } = await axios.patch("/users/" + id, user);
+    // const { data } = await axios.patch("/users/" + id, user);
+    const {data} = await axios.patch(`https://e-commercebackend-1-xg2z.onrender.com/users/${id}`)
     // console.log(data);
     localStorage.setItem("user", JSON.stringify(data));
     dispatch(asyncCurrentUser());
