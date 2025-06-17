@@ -53,6 +53,8 @@ export const asyncRegisterUser = (user) => async (dispatch, getState) => {
 
 export const asyncUpdateProfile = (id, user) => async (dispatch, getState) => {
   try {
+        console.log("id",id,"user",user)
+
     const { data } = await axios.patch("/users/" + id, user);
     // console.log(data);
     localStorage.setItem("user", JSON.stringify(data));
