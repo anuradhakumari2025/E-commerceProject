@@ -9,12 +9,9 @@ const productSlice  = createSlice({
   reducers:{
     loadProduct:(state,action)=>{
       state.products = action.payload
-    },
-    loadlazyproduct:(state,action)=>{
-      state.products=[...state.products,...action.payload]
     }
   }
 })
-export const {loadProduct,loadlazyproduct} = productSlice.actions
+export const {loadProduct} = productSlice.actions
 
 export default productSlice.reducer

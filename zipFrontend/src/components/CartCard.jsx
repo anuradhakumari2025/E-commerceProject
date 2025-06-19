@@ -57,7 +57,7 @@ const CartCard = ({ item }) => {
       </div>
       <div className="cardRight">
         <i
-          className="ri-close-large-line close"
+          className="ri-close-large-line"
           onClick={() => deleteItem(item?.product.id)}
         ></i>
         <div className="quantity">

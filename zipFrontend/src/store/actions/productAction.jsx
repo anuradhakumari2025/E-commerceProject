@@ -1,10 +1,10 @@
-import { loadlazyproduct, loadProduct } from "../reducers/productSlice";
+import { loadProduct } from "../reducers/productSlice";
 import axios from "../../api/axiosconfig";
 
 export const asyncLoadProducts = () => async (dispatch, getState) => {
   try {
     const { data } = await axios.get("/products");
-    dispatch(loadlazyproduct(data));
+    dispatch(loadProduct(data));
     // else console.log("Product not found")
   } catch (error) {
     console.log(error);

@@ -51,36 +51,36 @@ export const asyncRegisterUser = (user) => async (dispatch, getState) => {
   }
 };
 
-export const asyncUpdateProfile = (id, user) => async (dispatch, getState) => {
-  try {
-        console.log("id",id,"user",user)
-
-    const { data } = await axios.patch("/users/" + id, user);
-    // const {data} = await axios.patch(`https://e-commercebackend-1-xg2z.onrender.com/users/${id}`)
-    // console.log(data);
-    localStorage.setItem("user", JSON.stringify(data));
-    dispatch(asyncCurrentUser());
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-
 // export const asyncUpdateProfile = (id, user) => async (dispatch, getState) => {
 //   try {
-//     console.log("id", id, "user", user);
-    
-//     const { data } = await axios.patch(
-//       `https://e-commercebackend-1-xg2z.onrender.com/users/${id}`,
-//       user
-//     );
-    
+//         console.log("id",id,"user",user)
+
+//     // const { data } = await axios.patch("/users/" + id, user);
+//     const {data} = await axios.patch(`https://e-commercebackend-1-xg2z.onrender.com/users/${id}`)
+//     // console.log(data);
 //     localStorage.setItem("user", JSON.stringify(data));
 //     dispatch(asyncCurrentUser());
 //   } catch (error) {
-//     console.error("Update failed", error.response?.data || error.message);
+//     console.log(error);
 //   }
 // };
+
+
+export const asyncUpdateProfile = (id, user) => async (dispatch, getState) => {
+  try {
+    console.log("id", id, "user", user);
+    
+    const { data } = await axios.patch(
+      `https://e-commercebackend-1-xg2z.onrender.com/users/${id}`,
+      user
+    );
+    
+    localStorage.setItem("user", JSON.stringify(data));
+    dispatch(asyncCurrentUser());
+  } catch (error) {
+    console.error("Update failed", error.response?.data || error.message);
+  }
+};
 
 export const asyncDeleteUser = (id) => async (dispatch, getState) => {
   try {

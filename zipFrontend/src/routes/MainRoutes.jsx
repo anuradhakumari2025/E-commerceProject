@@ -1,18 +1,15 @@
 import { Route, Routes } from "react-router-dom";
-import { lazy, useEffect, useRef, useState } from "react";
-
-const Home = lazy(() => import("../pages/Home"));
-const Login = lazy(() => import("../pages/Login"));
-const Register = lazy(() => import("../pages/Register"));
-const Products = lazy(() => import("../pages/Products"));
-const CreateProduct = lazy(() => import("../pages/admin/CreateProduct"));
-const ProductDetails = lazy(() => import("../pages/admin/ProductDetails"));
-const UserProfile = lazy(() => import("../pages/user/UserProfile"));
-const Cart = lazy(() => import("../pages/user/Cart"));
-const Wishlist = lazy(() => import("../pages/user/Wishlist"));
-const Navbar = lazy(() => import("../components/Navbar"));
-
-
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import Products from "../pages/Products";
+import CreateProduct from "../pages/admin/CreateProduct";
+import ProductDetails from "../pages/admin/ProductDetails";
+import UserProfile from "../pages/user/UserProfile";
+import Cart from "../pages/user/Cart";
+import { useEffect, useRef, useState } from "react";
+import Navbar from "../components/Navbar";
+import Wishlist from "../pages/user/Wishlist";
 const MainRoutes = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const cartRef = useRef(null);
@@ -36,12 +33,10 @@ const MainRoutes = () => {
   }, []);
   return (
     <>
-      <Navbar
-        cartOpen={cartOpen}
+      <Navbar   cartOpen={cartOpen}
         setCartOpen={setCartOpen}
         cartRef={cartRef}
-        cartButtonRef={cartButtonRef}
-      />
+        cartButtonRef={cartButtonRef} />
       {/* Routes for different pages */}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -49,7 +44,7 @@ const MainRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/user-profile" element={<UserProfile />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/wishlist" element={<Wishlist/>}/>
         <Route path="/cart" element={<Cart />} />
         <Route path="admin/create-product" element={<CreateProduct />} />
         <Route path="/product-details/:id" element={<ProductDetails />} />

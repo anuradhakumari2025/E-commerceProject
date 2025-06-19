@@ -947,10 +947,8 @@ nav .showCart .buttons .view:hover {
   justify-content: space-between;
   flex-direction: column;
 }
-.cartCard .cardRight .close {
-  margin-left: auto;
-}
 .cartCard .cardRight i {
+  margin-left: auto;
   font-size: 1.2rem;
   border-radius: 50%;
   padding: 0.5rem;

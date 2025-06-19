@@ -1,7 +1,9 @@
-import { useSelector } from "react-redux";
-import ProductCard from "../components/ProductCard";
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import useInfiniteProducts from "../utils/useInfiniteProducts";
+
+const ProductCard = lazy(() => import("../components/ProductCard"));
 
 const Products = () => {
   const location = useLocation();
@@ -9,8 +11,7 @@ const Products = () => {
   const category = queryParams.get("category");
   const title = queryParams.get("title");
   const [filteredProducts, setFilteredProducts] = useState([]);
-
-  const products = useSelector((state) => state.productReducer.products);
+  const { products, hasMore, fetchProducts } = useInfiniteProducts();
 
   useEffect(() => {
     if (category) {
@@ -24,19 +25,30 @@ const Products = () => {
     } else {
       setFilteredProducts(products);
     }
-  }, [category,title,products]);
-
+  }, [category, title, products]);
 
   return (
-    <>
-      <h1 className="productsTitle">Best Selling Products</h1>
-      <div className="products">
-        {products?.length > 0 &&
-          filteredProducts?.map((product) => (
-            <ProductCard product={product} key={product.id} />
+    products?.length > 0 && (
+      <InfiniteScroll
+        dataLength={products.length}
+        next={fetchProducts}
+        hasMore={hasMore}
+        endMessage={
+          <p style={{ textAlign: "center", color: "red" }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        <h1 className="productsTitle">Best Selling Products</h1>
+        <div className="products">
+          {filteredProducts?.map((product) => (
+            <Suspense key={product.id} fallback={<h1>Loading...</h1>}>
+              <ProductCard product={product} key={product.id} />
+            </Suspense>
           ))}
-      </div>
-    </>
+        </div>
+      </InfiniteScroll>
+    )
   );
 };
 
