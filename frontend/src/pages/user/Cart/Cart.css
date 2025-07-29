@@ -1,0 +1,159 @@
+.carts {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  padding: 3rem 4rem;
+  background-color: #f8f9fa;
+}
+.carts .left {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.carts .right {
+  border-radius: 15px;
+  box-shadow: 1px 1px 2px 3px #d2d3d3;
+  background-color: white;
+  padding: 1rem 2rem;
+}
+.carts .right {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.carts .right .total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.carts .right .total span {
+  color: #888;
+  font-size: 1.2rem;
+}
+.carts .right .total .amount {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: black;
+}
+.carts .right .comments {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.carts .right .comments h2 {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.carts .right .comments h2 span {
+  color: #e94560;
+  background-color: rgb(236, 175, 175);
+  font-weight: 400;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+.carts .right .comments textarea {
+  width: 100%;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.carts .right input,
+.carts .right button {
+  padding: 1rem;
+  border-radius: 10px;
+}
+.carts .right button {
+  color: #e94560;
+  background-color: white;
+  border: 1px solid #e94560;
+}
+.carts .right .delivery {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.carts .right .delivery h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.carts .right .delivery .state {
+  margin: 0;
+  color: #888;
+}
+.carts .right .delivery select,
+.carts .right .delivery .pin {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+.carts .right .delivery .calculate {
+  margin-top: 1rem;
+}
+.carts .right .delivery .checkout {
+  color: white;
+  background-color: #e94560;
+  border: none;
+  margin: 1rem 0;
+}
+
+@media (max-width: 767px) {
+  .carts {
+    flex-direction: column;
+    padding: 1rem 1rem;
+  }
+  .carts .left {
+    width: 100%;
+  }
+  .carts .left .cartCard {
+    padding: 1rem 1rem;
+    gap: 1rem;
+  }
+  .carts .left .cartCard .image {
+    width: 40%;
+  }
+  .carts .left .cartCard .about {
+    padding: 0rem 0;
+    width: 100%;
+  }
+  .carts .left .cartCard .about h2 {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+  }
+  .carts .left .cartCard .cardRight {
+    width: 100%;
+    flex-direction: row-reverse;
+  }
+  .carts .left .cartCard .cardRight .quantity {
+    gap: 0.5rem;
+  }
+  .carts .left .cartCard .cardRight .quantity .itemQuantity {
+    font-size: 1.5rem;
+    padding: 0rem 0rem;
+    padding-top: 0.4rem;
+    padding-left: 0.2rem;
+  }
+  .carts .left .cartCard .cardRight .quantity .minus,
+  .carts .left .cartCard .cardRight .quantity .plus {
+    font-size: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .carts .right {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .carts {
+    flex-direction: column;
+  }
+  .carts .left {
+    width: 100%;
+  }
+  .carts .right {
+    width: 100%;
+  }
+}/*# sourceMappingURL=Cart.css.map */

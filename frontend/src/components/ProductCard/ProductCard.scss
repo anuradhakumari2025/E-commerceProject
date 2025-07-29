@@ -1,0 +1,75 @@
+.productCard {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.253);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  .image {
+    width: 100%;
+    position: relative;
+    aspect-ratio: 2/3;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+    .showHeart {
+      position: absolute;
+      width: 2rem;
+      top: 10%;
+      right: 5%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      i {
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+      }
+    }
+    .active {
+      .detail {
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #0f3460;
+        padding: 1rem 0;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+  p {
+    text-align: center;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: gray;
+    padding-top: 1rem;
+  }
+  .title {
+    font-size: 1.1rem;
+    text-align: center;
+    padding-top: 0.5rem;
+    font-weight: 500;
+  }
+  .price {
+    font-size: 1.3rem;
+    color: #0f3460;
+    font-weight: 600;
+    padding-bottom: 1rem;
+  }
+}
+.productCard:hover {
+  scale: 1.05;
+  transition: all ease-in-out 0.4s;
+}
+
+@media (max-width: 767px) {
+  /* Styles for mobile phones */
+  
+}

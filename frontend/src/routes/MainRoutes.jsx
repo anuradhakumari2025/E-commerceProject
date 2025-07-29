@@ -5,12 +5,12 @@ const Home = lazy(() => import("../pages/Home"));
 const Login = lazy(() => import("../pages/Login"));
 const Register = lazy(() => import("../pages/Register"));
 const Products = lazy(() => import("../pages/Products"));
-const CreateProduct = lazy(() => import("../pages/admin/CreateProduct"));
-const ProductDetails = lazy(() => import("../pages/admin/ProductDetails"));
-const UserProfile = lazy(() => import("../pages/user/UserProfile"));
-const Cart = lazy(() => import("../pages/user/Cart"));
+const CreateProduct = lazy(() => import("../pages/admin/CreateProduct/CreateProduct"));
+const ProductDetails = lazy(() => import("../pages/admin/ProductDetails/ProductDetails"));
+const UserProfile = lazy(() => import("../pages/user/Profile/UserProfile"));
+const Cart = lazy(() => import("../pages/user/Cart/Cart"));
 const Wishlist = lazy(() => import("../pages/user/Wishlist"));
-const Navbar = lazy(() => import("../components/Navbar"));
+const Navbar = lazy(() => import("../components/Navbar/Navbar"));
 
 
 const MainRoutes = () => {

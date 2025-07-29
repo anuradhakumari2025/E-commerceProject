@@ -1,0 +1,24 @@
+@import "../../../styles/mixin";
+
+.createProduct {
+  @include overlayDiv;
+  height: auto;
+  form {
+    @include form;
+    button {
+      @include button;
+      @include borderBtn;
+    }
+    button:hover {
+      @include bgBtn;
+    }
+  }
+}
+@media (max-width: 767px) {
+ .createProduct {
+    padding: 8rem 0;
+    form {
+      width: 90%;
+    }
+  }
+}

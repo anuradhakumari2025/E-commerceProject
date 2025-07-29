@@ -1,0 +1,160 @@
+.carts {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  padding: 3rem 4rem;
+  background-color: #f8f9fa;
+  .left {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .right {
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px 3px #d2d3d3;
+    background-color: white;
+    padding: 1rem 2rem;
+  }
+  .right {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    .total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        color: #888;
+        font-size: 1.2rem;
+      }
+      .amount {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: black;
+      }
+    }
+    .comments {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      h2 {
+        font-weight: 500;
+        font-size: 1.2rem;
+        span {
+          color: #e94560;
+          background-color: rgb(236, 175, 175);
+          font-weight: 400;
+          padding: 0.2rem 0.5rem;
+          border-radius: 2px;
+        }
+      }
+      textarea {
+        width: 100%;
+        border-radius: 10px;
+        padding: 1rem;
+      }
+    }
+    input,
+    button {
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    button {
+      color: #e94560;
+      background-color: white;
+      border: 1px solid #e94560;
+    }
+    .delivery {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      h1 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+      .state {
+        margin: 0;
+        color: #888;
+      }
+      select,
+      .pin {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+      }
+      .calculate {
+        margin-top: 1rem;
+      }
+      .checkout {
+        color: white;
+        background-color: #e94560;
+        border: none;
+        margin: 1rem 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .carts {
+    flex-direction: column;
+    padding: 1rem 1rem;
+    .left {
+      width: 100%;
+      .cartCard {
+        padding: 1rem 1rem;
+        gap: 1rem;
+        .image {
+          width: 40%;
+        }
+        .about {
+          padding: 0rem 0;
+          width: 100%;
+          h2 {
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+          }
+        }
+        .cardRight {
+          width: 100%;
+          flex-direction: row-reverse;
+          .quantity {
+            gap: 0.5rem;
+            .itemQuantity {
+              font-size: 1.5rem;
+              padding: 0rem 0rem;
+              padding-top: 0.4rem;
+              padding-left: 0.2rem;
+            }
+            .minus,
+            .plus {
+              font-size: 2rem;
+              width: 1.5rem;
+              height: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+    .right {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .carts {
+    flex-direction: column;
+    .left {
+      width: 100%;
+    }
+    .right {
+      width: 100%;
+    }
+  }
+}

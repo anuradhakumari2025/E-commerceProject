@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import ProductCard from "../components/ProductCard";
 import { useSelector } from "react-redux";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import "./Home.css"
 
 const Home = () => {
   const categories = [
@@ -56,8 +57,8 @@ const Home = () => {
           {products?.length > 0 &&
             products
               ?.slice(0, 8)
-              .map((product) => (
-                <ProductCard product={product} key={product.id} />
+              .map((product, idx) => (
+                <ProductCard product={product} key={idx} />
               ))}
         </div>
       </section>

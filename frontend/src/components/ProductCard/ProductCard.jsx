@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { asyncUpdateProfile } from "../store/actions/userActions";
+import { asyncUpdateProfile } from "../../store/actions/userActions";
 import { toast } from "react-toastify";
+import "./ProductCard.css"
 
 const ProductCard = ({ product }) => {
   const [showHeart, setShowHeart] = useState(false);
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.productReducer.products);
   const user = useSelector((state) => state.userReducer.user);
   // console.log(user)
   const showHeartHandler = () => {
@@ -17,11 +17,8 @@ const ProductCard = ({ product }) => {
     setShowHeart(false);
   };
   const cartHandler = (product) => {
-    // console.log(product)
     const copyUser = { ...user, cart: [...user.cart] };
-    // console.log(copyUser);
-    let idx = copyUser?.cart?.findIndex((c) => c.product.id == product.id);
-    console.log(idx);
+    let idx = copyUser?.cart?.findIndex((c) => c.product._id == product._id);
     if (idx === -1) {
       toast.success("Item added successfully!");
       copyUser.cart.push({ product, quantity: 1 });
@@ -31,7 +28,7 @@ const ProductCard = ({ product }) => {
         quantity: copyUser.cart[idx].quantity + 1,
       };
     }
-    dispatch(asyncUpdateProfile(copyUser.id, copyUser));
+    dispatch(asyncUpdateProfile(copyUser));
   };
 
   const addWishlist = (product) => {
@@ -43,11 +40,11 @@ const ProductCard = ({ product }) => {
     toast.success("Item added successfully in wishlist!");
     copyUser.wishlist.push(product);
     // console.log("after push in wishlist", copyUser);
-    dispatch(asyncUpdateProfile(copyUser.id, copyUser));
+    dispatch(asyncUpdateProfile(copyUser));
   };
   const removeWishlist = (product) => {
     const filteredwishlist = user?.wishlist?.filter(
-      (item) => item.id != product.id
+      (item) => item._id != product._id
     );
     const copyUser = {
       ...user,
@@ -56,11 +53,11 @@ const ProductCard = ({ product }) => {
     };
     toast.error("Item removed successfully from wishlist!");
 
-    dispatch(asyncUpdateProfile(copyUser.id, copyUser));
+    dispatch(asyncUpdateProfile(copyUser));
     // console.log("after delete in wishlist", copyUser);
   };
   return (
-    <div key={product?.id} className="productCard">
+    <div key={product?._id} className="productCard">
       <div
         className="image"
         onMouseEnter={showHeartHandler}
@@ -71,10 +68,11 @@ const ProductCard = ({ product }) => {
           <>
             <div className="showHeart">
               {/* Input for favourite */}
-              {user?.wishlist?.find((f) => f.id == product?.id) ? (
+              {user?.wishlist?.find((f) => f._id == product?._id) ? (
                 <i
                   onClick={() => removeWishlist(product)}
-                  className="ri-heart-fill" style={{color:"red"}}
+                  className="ri-heart-fill"
+                  style={{ color: "red" }}
                 ></i>
               ) : (
                 <i
@@ -88,7 +86,7 @@ const ProductCard = ({ product }) => {
                 onClick={() => cartHandler(product)}
               ></i>
             </div>
-            <Link className="active" to={`/product-details/${product?.id}`}>
+            <Link className="active" to={`/product-details/${product?._id}`}>
               <div className="detail">Quick View</div>
             </Link>
           </>

@@ -1,0 +1,88 @@
+.cartCard {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 1px 1px 2px 3px #d2d3d3;
+  background-color: white;
+  padding: 1rem 2rem;
+}
+.cartCard .image {
+  width: 20%;
+  aspect-ratio: 1/1;
+}
+.cartCard .image img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+}
+.cartCard .about {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 1rem 1rem;
+}
+.cartCard .about h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.cartCard .about h3 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.cartCard .about p {
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #888;
+}
+.cartCard .about .total {
+  color: #e94560;
+}
+.cartCard .cardRight {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.cartCard .cardRight .close {
+  margin-left: auto;
+}
+.cartCard .cardRight i {
+  font-size: 1.2rem;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+.cartCard .cardRight i:hover {
+  background-color: #f3f5f9;
+}
+.cartCard .cardRight .quantity {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+.cartCard .cardRight .quantity .minus,
+.cartCard .cardRight .quantity .plus {
+  font-size: 2.2rem;
+  cursor: pointer;
+  padding: 0;
+  background-color: white;
+}
+.cartCard .cardRight .quantity .minus {
+  color: #9ca5b5;
+}
+.cartCard .cardRight .quantity .plus {
+  color: #e94560;
+}
+
+.cartCard:hover {
+  scale: 1.02;
+  transition: all ease-in-out 0.4s;
+}
+
+@media (max-width: 767px) {
+  .cartCard {
+    flex-direction: column;
+  }
+}/*# sourceMappingURL=CartCard.css.map */

@@ -1,20 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  products : []
-}
-const productSlice  = createSlice({
-  name:"product",
+  products: [],
+};
+const productSlice = createSlice({
+  name: "product",
   initialState,
-  reducers:{
-    loadProduct:(state,action)=>{
-      state.products = action.payload
+  reducers: {
+    loadProduct: (state, action) => {
+      state.products = action.payload;
     },
-    loadlazyproduct:(state,action)=>{
-      state.products=[...state.products,...action.payload]
-    }
-  }
-})
-export const {loadProduct,loadlazyproduct} = productSlice.actions
+    loadlazyproduct: (state, action) => {
+      const incoming = action.payload;
+      const existingIds = new Set(state.products.map((p) => p._id));
+      const newProducts = incoming.filter((p) => !existingIds.has(p._id));
+      state.products = [...state.products, ...newProducts];
+    },
+  },
+});
+export const { loadProduct, loadlazyproduct } = productSlice.actions;
 
-export default productSlice.reducer
+export default productSlice.reducer;

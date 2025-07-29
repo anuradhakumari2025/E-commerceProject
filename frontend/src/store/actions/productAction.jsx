@@ -4,8 +4,8 @@ import axios from "../../api/axiosconfig";
 export const asyncLoadProducts = () => async (dispatch, getState) => {
   try {
     const { data } = await axios.get("/products");
+    // console.log(data,"data from asyncloadproducts")
     dispatch(loadlazyproduct(data));
-    // else console.log("Product not found")
   } catch (error) {
     console.log(error);
   }

@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { asyncCreateProduct } from "../../store/actions/productAction";
+import { asyncCreateProduct } from "../../../store/actions/productAction";
+import "./CreateProduct.css"
 
 const CreateProduct = () => {
   const dispatch = useDispatch()

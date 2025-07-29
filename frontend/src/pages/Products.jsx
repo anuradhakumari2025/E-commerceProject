@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useInfiniteProducts from "../utils/useInfiniteProducts";
 
-const ProductCard = lazy(() => import("../components/ProductCard"));
+const ProductCard = lazy(() => import("../components/ProductCard/ProductCard"));
 
 const Products = () => {
   const location = useLocation();
@@ -42,8 +42,8 @@ const Products = () => {
         <h1 className="productsTitle">Best Selling Products</h1>
         <div className="products">
           {filteredProducts?.map((product) => (
-            <Suspense key={product.id} fallback={<h1>Loading...</h1>}>
-              <ProductCard product={product} key={product.id} />
+            <Suspense key={product._id} fallback={<h1>Loading...</h1>}>
+              <ProductCard product={product} />
             </Suspense>
           ))}
         </div>

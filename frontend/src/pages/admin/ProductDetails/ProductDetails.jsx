@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   asyncDeleteProduct,
+  asyncLoadProducts,
   asyncUpdateProduct,
-} from "../../store/actions/productAction";
-import { asyncUpdateProfile } from "../../store/actions/userActions";
-import { useState } from "react";
+} from "../../../store/actions/productAction";
+import { asyncUpdateProfile } from "../../../store/actions/userActions";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import "./ProductDetails.scss"
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -16,8 +19,7 @@ const ProductDetails = () => {
   // console.log(products)
   // console.log(user);
   const dispatch = useDispatch();
-  const product = products.find((item) => item.id == id);
-  // console.log(product);
+  const product = products.find((item) =>item._id === id);
   const navigate = useNavigate();
 
   const {
@@ -38,8 +40,7 @@ const ProductDetails = () => {
     // console.log(product)
     const copyUser = { ...user, cart: [...user.cart] };
     // console.log(copyUser);
-    let idx = copyUser?.cart?.findIndex((c) => c.product.id == product.id);
-    console.log(idx);
+    let idx = copyUser?.cart?.findIndex((c) => c.product._id == product._id);
     if (idx === -1) {
       copyUser.cart.push({ product, quantity: 1 });
     } else {
@@ -49,7 +50,8 @@ const ProductDetails = () => {
       };
     }
     // console.log("after push in cart", copyUser);
-    dispatch(asyncUpdateProfile(copyUser.id, copyUser));
+    toast.success("Item added successfully")
+    dispatch(asyncUpdateProfile(copyUser));
   };
 
   //Update Product Handler Function
@@ -64,6 +66,10 @@ const ProductDetails = () => {
     navigate("/products");
     setShowForm(false)
   };
+   useEffect(() => {
+    dispatch(asyncLoadProducts());
+  }, [dispatch]);
+
   return (
     <>
       <div className="product-modal">

@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
-import { asyncUpdateProfile } from "../../store/actions/userActions";
-import CartCard from "../../components/CartCard";
+import { useSelector } from "react-redux";
+import CartCard from "../../../components/CartCard/CartCard";
+import "./Cart.css"
 
 const Cart = () => {
   const user = useSelector((state) => state.userReducer.user);
@@ -12,7 +12,6 @@ const Cart = () => {
     }
     return sum
   };
-
   return user?.cart?.length > 0 ? (
     <div className="carts">
       <div className="left">

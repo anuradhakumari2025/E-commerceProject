@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { asyncUpdateProfile } from "../store/actions/userActions";
+import { asyncUpdateProfile } from "../../store/actions/userActions";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-const NavCart = ({ user, cartRef }) => {
+const NavCart = ({ user, cartRef, setCartOpen, cartOpen }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -32,6 +32,7 @@ const NavCart = ({ user, cartRef }) => {
     dispatch(asyncUpdateProfile(copyUser.id, copyUser));
     // console.log(copyUser);
   };
+
   const totalAmount = function () {
     let sum = 0;
     for (let i = 0; i < user.cart.length; i++) {
@@ -76,7 +77,13 @@ const NavCart = ({ user, cartRef }) => {
         <button className="price" onClick={() => navigate("/cart")}>
           Checkout Now (${totalAmount()})
         </button>
-        <button className="view" onClick={() => navigate("/cart")}>
+        <button
+          className="view"
+          onClick={() => {
+            setCartOpen(!cartOpen);
+            navigate("/cart");
+          }}
+        >
           View Cart
         </button>
       </div>

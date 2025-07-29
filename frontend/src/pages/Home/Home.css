@@ -1,0 +1,119 @@
+.home {
+  width: 100%;
+  padding-top: 1rem;
+}
+.home .banner {
+  width: 100%;
+  background-image: url("https://i.pinimg.com/736x/2f/67/5b/2f675bfde50a1de63abac05025009e0f.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.home .banner h1 {
+  padding: 0 3rem;
+  width: 45%;
+  font-weight: 600;
+  font-size: 6rem;
+  line-height: 5.5rem;
+  color: rgb(224, 138, 138);
+  text-shadow: 1px 3px 1px red;
+}
+.home .categories {
+  padding: 2rem 3rem;
+  text-align: center;
+}
+.home .categories__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.home .categories__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.home .categories__grid .categoriesCard {
+  position: relative;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.home .categories__grid .categoriesCard:hover {
+  transform: scale(1.03);
+}
+.home .categories__grid .categoriesCard img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-radius: 0.5rem;
+}
+.home .categories__grid .categoriesCard .categoriesLabel {
+  position: absolute;
+  width: 90%;
+  padding: 0.8rem 0;
+  bottom: 3%;
+  left: 5%;
+  background-color: rgba(255, 255, 255, 0.651);
+  color: #0f3460;
+  font-weight: 600;
+  border-radius: 5px;
+}
+.home .categories__grid .categoriesCard:hover .categoriesLabel {
+  background-color: #0f3460;
+  color: white;
+}
+.home footer {
+  display: grid;
+  background-color: #0f3460;
+  color: white;
+  padding: 6rem 6rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+.home footer h1 {
+  color: #f44366;
+  padding: 1rem 0;
+}
+.home footer h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 1rem 0;
+}
+.home footer p {
+  color: #888;
+  padding-bottom: 0.8rem;
+}
+.home footer p:hover {
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .home .banner {
+    align-items: flex-end;
+  }
+  .home .banner h1 {
+    font-size: 4.2rem;
+    width: 100%;
+    padding: 1rem 0rem;
+    text-align: center;
+  }
+  .home .categories {
+    width: 100%;
+    padding: 2rem 2rem;
+  }
+  .home .categories__grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .home footer {
+    padding: 5rem 3rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home footer p {
+    padding-bottom: 0.4rem;
+  }
+}/*# sourceMappingURL=Home.css.map */

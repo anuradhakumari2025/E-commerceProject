@@ -3,17 +3,16 @@ import { loadUser, removeUser } from "../reducers/userSlice";
 
 export const asyncLoginUser = (user) => async (dispatch, getState) => {
   try {
-    const { data } = await axios.get(
-      `users?email=${user.email}&password=${user.password}`
-    );
-    // console.log(data[0])
-    if (data.length > 0) {
-      const loggedInUser = data[0];
-
-      localStorage.setItem("user", JSON.stringify(loggedInUser));
+    const { data } = await axios.post("/users/login", {
+      email: user.email,
+      password: user.password,
+    });
+    console.log("Login response:", data); // This should show user inside data.user
+    if (data.user) {
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       // Dispatch to update Redux immediately
-      dispatch(loadUser(loggedInUser));
+      dispatch(loadUser(data.user));
     } else {
       console.log("User not found");
     }
@@ -34,53 +33,39 @@ export const asyncLogoutUser = (user) => async (dispatch, getState) => {
 
 export const asyncCurrentUser = () => async (dispatch, getState) => {
   try {
-    let user = JSON.parse(localStorage.getItem("user"));
-    if (user) dispatch(loadUser(user));
-    else console.log("Login to Access is denied");
+    const userString = localStorage.getItem("user");
+
+    if (userString) {
+      const user = JSON.parse(userString);
+      dispatch(loadUser(user));
+    } else {
+      console.log("Login to Access is denied");
+    }
   } catch (error) {
-    console.log(error);
+    console.log("Error parsing user from localStorage:", error);
   }
 };
 
+
 export const asyncRegisterUser = (user) => async (dispatch, getState) => {
   try {
-    const res = await axios.post("/users", user);
+    const res = await axios.post("/users/register", user);
     // console.log(res);
   } catch (error) {
     console.log(error);
   }
 };
 
-export const asyncUpdateProfile = (id, user) => async (dispatch, getState) => {
+export const asyncUpdateProfile = (updatedUser) => async (dispatch, getState) => {
   try {
-        console.log("id",id,"user",user)
-
-    const { data } = await axios.patch("/users/" + id, user);
-    // const {data} = await axios.patch(`https://e-commercebackend-1-xg2z.onrender.com/users/${id}`)
-    // console.log(data);
+    const { _id } = updatedUser;
+    const { data } = await axios.patch("/users/" + _id, updatedUser);
     localStorage.setItem("user", JSON.stringify(data));
     dispatch(asyncCurrentUser());
   } catch (error) {
     console.log(error);
   }
 };
-
-
-// export const asyncUpdateProfile = (id, user) => async (dispatch, getState) => {
-//   try {
-//     console.log("id", id, "user", user);
-    
-//     const { data } = await axios.patch(
-//       `https://e-commercebackend-1-xg2z.onrender.com/users/${id}`,
-//       user
-//     );
-    
-//     localStorage.setItem("user", JSON.stringify(data));
-//     dispatch(asyncCurrentUser());
-//   } catch (error) {
-//     console.error("Update failed", error.response?.data || error.message);
-//   }
-// };
 
 export const asyncDeleteUser = (id) => async (dispatch, getState) => {
   try {

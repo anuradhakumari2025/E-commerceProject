@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import "./UserProfile.scss"
 import {
   asyncDeleteUser,
   asyncLogoutUser,
   asyncUpdateProfile,
-} from "../../store/actions/userActions";
+} from "../../../store/actions/userActions";
 import { useEffect, useState } from "react";
 
 const UserProfile = () => {
@@ -69,11 +70,11 @@ const UserProfile = () => {
             <h4>ACCOUNT SETTINGS</h4>
             <ul>
               <li className="active">
-                <i className="ri-user-line icon"></i> Profile Info{" "}
+                <i className="ri-user-line icon"></i> Profile Info
                 <span>3</span>
               </li>
               <li>
-                <i className="ri-home-9-fill icon"></i> Addresses{" "}
+                <i className="ri-home-9-fill icon"></i> Addresses
                 <span>16</span>
               </li>
             </ul>

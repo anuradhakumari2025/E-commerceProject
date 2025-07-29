@@ -3,12 +3,13 @@ import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import MobileMenu from "./MobileMenu";
 import NavCart from "./NavCart";
+import "./Navbar.scss"
 
 const Navbar = ({ cartOpen, setCartOpen, cartRef, cartButtonRef }) => {
   let user = useSelector((state) => state.userReducer.user);
   // console.log(user);
   const navigate = useNavigate();
-  
+
   const handleCategoryChange = (e) => {
     if (e.target.value) {
       navigate(`/products?category=${e.target.value}`);
@@ -19,12 +20,11 @@ const Navbar = ({ cartOpen, setCartOpen, cartRef, cartButtonRef }) => {
       navigate(`/products?title=${e.target.value}`);
     }
   };
- 
 
   useEffect(() => {
-    console.log("Mount");
+    // console.log("Mount");
     return () => {
-      console.log("Unmount");
+      // console.log("Unmount");
     };
   }, [user]);
   return (
@@ -105,9 +105,7 @@ const Navbar = ({ cartOpen, setCartOpen, cartRef, cartButtonRef }) => {
                 <p>{user?.cart?.length}</p>
               </div>
 
-              {cartOpen && (
-               <NavCart user={user} cartRef={cartRef}/>
-              )}
+              {cartOpen && <NavCart user={user} cartRef={cartRef} setCartOpen={setCartOpen} cartOpen={cartOpen}/>}
             </div>
 
             {/* </NavLink> */}
