@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy, useEffect, useRef, useState } from "react";
 
-const Home = lazy(() => import("../pages/Home"));
+const Home = lazy(() => import("../pages/Home/Home"));
 const Login = lazy(() => import("../pages/Login"));
 const Register = lazy(() => import("../pages/Register"));
 const Products = lazy(() => import("../pages/Products"));
