@@ -1,10 +1,11 @@
 {
-    "name": "majorprojectbackend",
+  "name": "e-commerce-backend",
   "version": "1.0.0",
-  "description": "a backend at chai aur code ",
+  "description": "it have products and user details",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [
     "javascipt",

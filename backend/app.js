@@ -8,7 +8,7 @@ const userRoutes = require("./src/routes/User.route.js")
 require("dotenv").config()
 app.use(express.json());
 app.use(cors({
-  origin:"http://localhost:5173",
+  origin:"https://e-commerceproject-1-3ye5.onrender.com/",
   credentials:true
 }))
 
@@ -18,7 +18,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes); // all routes start with /api/users
 
 
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log("app is listening");
 });
 
